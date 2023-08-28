@@ -1,10 +1,10 @@
 package com.example.liuqu.service;
 
-import com.example.liuqu.Model.Result;
-import com.example.liuqu.Model.User;
+import com.example.liuqu.model.Result;
+import com.example.liuqu.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.liuqu.Repository.UserRepository;
+import com.example.liuqu.repository.UserRepository;
 
 import java.util.Optional;
 

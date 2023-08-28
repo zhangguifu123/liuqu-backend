@@ -1,4 +1,4 @@
-package com.example.liuqu.Model;
+package com.example.liuqu.model;
 
 
 import lombok.Data;

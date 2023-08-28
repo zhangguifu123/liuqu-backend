@@ -1,8 +1,8 @@
-package com.example.liuqu.Controller;
+package com.example.liuqu.controller;
 
-import com.example.liuqu.Model.Result;
-import com.example.liuqu.Model.User;
-import com.example.liuqu.Repository.UserRepository;
+import com.example.liuqu.model.Result;
+import com.example.liuqu.model.User;
+import com.example.liuqu.repository.UserRepository;
 import com.example.liuqu.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package com.example.liuqu.Repository;
+package com.example.liuqu.repository;
 
-import com.example.liuqu.Model.User;
+import com.example.liuqu.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
