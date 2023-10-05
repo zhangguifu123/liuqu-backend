@@ -37,7 +37,7 @@ public class userService {
         User user = userRepository.findByEmail(emailOrPhone)
                 .orElse((User) userRepository.findByPhone(emailOrPhone).orElse(null));
         if (user != null && user.getPassword().equals(password)) { // 实际应用中应使用加密密码
-            result.setResultSuccess("登录成功", user.getToken());
+            result.setResultSuccess("login successful", user.getToken());
 
         }else{
             result.setResultFailed("用户名和密码不匹配");

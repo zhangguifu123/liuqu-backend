@@ -16,7 +16,7 @@ public class Result<T> implements Serializable {
     /**
      * 消息
      */
-    private String status;
+    private String messgae;
 
     /**
      * 是否操作成功
@@ -34,7 +34,7 @@ public class Result<T> implements Serializable {
      * @param msg 消息
      */
     public void setResultSuccess(String msg) {
-        this.status = msg;
+        this.messgae = msg;
         this.code = 0;
         this.data = null;
     }
@@ -46,7 +46,7 @@ public class Result<T> implements Serializable {
      * @param data 数据体
      */
     public void setResultSuccess(String msg, T data) {
-        this.status = msg;
+        this.messgae = msg;
         this.code = 0;
         this.data = data;
     }
@@ -57,7 +57,7 @@ public class Result<T> implements Serializable {
      * @param msg 消息
      */
     public void setResultFailed(String msg) {
-        this.status = msg;
+        this.messgae = msg;
         this.code = 1;
         this.data = null;
     }
