@@ -11,11 +11,15 @@ public class User {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer uid;
     private String nickname;
-    private String name;
+    private String username;
     private String email;
     private String phone;
     private String password;
     private String token;
+    private String personal_description;
+    private String hobby;
+
+
     public Integer getUid() {
         return uid;
     }
@@ -32,12 +36,12 @@ public class User {
         this.nickname = nickname;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = username;
     }
 
     public String getEmail() {

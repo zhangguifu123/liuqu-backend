@@ -13,43 +13,42 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
+                    autoIncrement: true
               - column:
                   name: nickname
                   type: varchar(255)
                   constraints:
-                    remarks: "昵称"
                     nullable: false
-                    defaultValueComputed: "CONCAT('小生', UUID())"
+                    defaultValueComputed: "CONCAT('user', UUID())"
               - column:
                   name: name
                   type: varchar(255)
                   constraints:
-                    remarks: "真实姓名"
                     nullable: false
-
+              - column:
+                  name: personal_description
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
               - column:
                   name: email
                   type: varchar(255)
                   constraints:
-                    remarks: "邮箱"
                     nullable: false
               - column:
                   name: phone
                   type: varchar(10)
                   constraints:
-                    remarks: "电话号码"
                     nullable: false
               - column:
                   name: password
                   type: varchar(255)
                   constraints:
-                    remarks: "密码"
                     nullable: false
               - column:
                   name: is_silence
                   type: TINYINT(1)
                   constraints:
-                    remarks: "是否被禁言"
                     nullable: true
                     defaultValue: 0
               - column:
@@ -58,46 +57,32 @@ databaseChangeLog:
                   constraints:
                     nullable: true
               - column:
-                  name: avatar
+                  name: dob
+                  type: datetime
+                  constraints:
+                    remarks: "??? I forgot"
+                    nullable: true
+              - column:
+                  name: avatar_path
                   type: varchar(255)
                   constraints:
-                    remarks: "头像链接"
+                    remarks: "avatar path"
                     nullable: true
-                    defaultValue: "asdad"
+                    defaultValue: "default value path"
               - column:
-                  name: expires_in
+                  name: hobby
                   type: varchar(255)
                   constraints:
-                    remarks: "token生成时间"
                     nullable: true
+                    defaultValue: "nothing"
               - column:
-                  name: my_activities
-                  type: JSON
+                  name: user_type
+                  type: enum('Regular', 'Admin', 'Editor', 'Autism')
                   constraints:
-                    remarks: "我的活动"
-                    nullable: true
-                    defaultValue: {}
-              - column:
-                  name: my_services
-                  type: JSON
-                  constraints:
-                    remarks: "我的服务"
-                    nullable: true
-                    defaultValue: {}
-              - column:
-                  name: my_collect_activities
-                  type: JSON
-                  constraints:
-                    remarks: "我收藏的活动"
-                    nullable: true
-                    defaultValue: {}
-              - column:
-                  name: my_collect_services
-                  type: JSON
-                  constraints:
-                    remarks: "我收藏的服务"
-                    nullable: true
-                    defaultValue: {}
+                    nullable: false
+
+
+
 #       活动表
         - createTable:
             tableName: activity
@@ -108,6 +93,7 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
+                    autoIncrement: true
               - column:
                   name: publisher_id
                   type: int
@@ -203,6 +189,7 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
+                    autoIncrement: true
               - column:
                   name: uid
                   type: int
@@ -231,6 +218,7 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
+                    autoIncrement: true
               - column:
                   name: uid
                   type: int
@@ -259,6 +247,7 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
+                    autoIncrement: true
               - column:
                   name: group_name
                   type: varchar(255)
@@ -277,3 +266,12 @@ databaseChangeLog:
                   constraints:
                     remarks: "群主id"
                     nullable: false
+  - changeSet:
+      id: 2
+      author: Ego
+      changes:
+        - renameColumn:
+            tableName: user
+            oldColumnName: name
+            newColumnName: username
+            columnDataType: varchar(255)

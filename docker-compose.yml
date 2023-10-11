@@ -8,7 +8,7 @@ services:
     volumes:
       - /home/ec2-user/liuqu:/data
     ports:
-      - 8080:8080
+      - 8082:8080
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://liuqu.crkthhieiwvr.ap-southeast-2.rds.amazonaws.com:3306/liuqu
       - SPRING_DATASOURCE_USERNAME=root

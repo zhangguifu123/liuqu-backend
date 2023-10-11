@@ -2,8 +2,9 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.1.2'
 	id 'io.spring.dependency-management' version '1.1.2'
-
 }
+
+
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -30,16 +31,17 @@ dependencies {
 	implementation group: 'software.aws.rds', name: 'aws-mysql-jdbc', version: '1.1.9'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'mysql:mysql-connector-java:8.0.23'
-	implementation 'org.liquibase:liquibase-core'
-	// Spring Security
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
 	// Validation
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	// JWT
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	compileOnly 'org.projectlombok:lombok:1.18.22' // 请检查最新版本
 	annotationProcessor 'org.projectlombok:lombok:1.18.22' // 请检查最新版本
@@ -54,10 +56,10 @@ def jarname = String.format("%s-%s.jar",project.name,version)
 // 拷贝文件 dependsOn: bootJar 依赖springboot 插件的 bootJar打包命令
 task copyConfigFile(type: Copy, dependsOn: bootJar) {
 	// 清除app目录的历史文件
-	delete "app/"
+	delete "docker/springboot/app/"
 	// copy jar包 从 build/libs/ 目录到 app/ 目录
 	from('build/libs/' + jarname)
-	into 'app/'
+	into 'docker/springboot/app/'
 	// 重命名成我们要的名字
 	rename(jarname, project.name + '.jar')
 }
