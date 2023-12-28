@@ -1,0 +1,483 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Ego
+      changes:
+#       User table
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: uid
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: personal_description
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_silence
+                  type: TINYINT(1)
+                  constraints:
+                    nullable: true
+                    defaultValue: 0
+              - column:
+                  name: token
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: dob
+                  type: datetime
+                  constraints:
+                    remarks: "??? I forgot"
+                    nullable: true
+              - column:
+                  name: avatar_path
+                  type: varchar(255)
+                  constraints:
+                    remarks: "avatar path"
+                    nullable: true
+                    defaultValue: "default value path"
+              - column:
+                  name: hobby
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+                    defaultValue: "nothing"
+              - column:
+                  name: user_type
+                  type: enum('Regular', 'Admin', 'Editor', 'Autism')
+                  constraints:
+                    nullable: false
+
+#       event table
+        - createTable:
+            tableName: event
+            columns:
+              - column:
+                  name: eid
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: uid
+                  type: int
+                  constraints:
+                    remarks: "owner id"
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: label
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    remarks: "event introduction"
+                    nullable: false
+              - column:
+                  name: event_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+
+#       post table
+        - createTable:
+            tableName: post
+            columns:
+              - column:
+                  name: pid
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: uid
+                  type: int
+                  constraints:
+                    remarks: "pusher id"
+                    nullable: false
+              - column:
+                  name: content
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: post
+                  type: datetime
+                  constraints:
+                    nullable: false
+#       comment table
+        - createTable:
+            tableName: comment
+            columns:
+              - column:
+                  name: cid
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: uid
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: parent_comment_id
+                  type: int
+              - column:
+                  name: context
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: comment_date
+                  type: datetime
+                  constraints:
+                    nullable: true
+#       emotion record
+        - createTable:
+            tableName: emotion_record
+            columns:
+              - column:
+                  name: eid
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: emotion
+                  type: varchar(255)
+                  constraints:
+                    remarks: "emtion card"
+                    nullable: false
+              - column:
+                  name: emotion_record_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+#       entry
+        - createTable:
+            tableName: entry
+            columns:
+              - column:
+                  name: eid
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: emotion
+                  type: varchar(50)
+                  constraints:
+                    remarks: "emtion card"
+                    nullable: false
+              - column:
+                  name: emotion_record_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+#       news
+        - createTable:
+            tableName: news
+            columns:
+              - column:
+                  name: eid
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: uid
+                  type: int
+                  constraints:
+                    remarks: "emtion card"
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: new_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+        #     autism_register
+        - createTable:
+            tableName: autism_register
+            columns:
+              - column:
+                  name: aid
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dob
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: gender
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(15)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: text
+                  constraints:
+                    nullable: true
+              - column:
+                  name: guardian_first_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: guardian_last_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: relationship_to_individual
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: guardian_email
+                  type: varchar(100)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: guardian_phone
+                  type: varchar(15)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: race_ethnicity
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: spoken_languages
+                  type: text
+                  constraints:
+                    nullable: true
+              - column:
+                  name: nationality
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: diagnosis
+                  type: varchar(100)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: diagnosis_date
+                  type: datetime
+                  constraints:
+                    nullable: true
+              - column:
+                  name: register_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: Ego
+      changes:
+        - addColumn:
+            tableName: user
+            columns:
+              - column:
+                  name: gender
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 3
+      author: Ego
+      changes:
+        - addColumn:
+            tableName: post
+            columns:
+              - column:
+                  name: if_deleted
+                  type: boolean
+                  defaultValue: false
+                  constraints:
+                    nullable: false
+                    defaultValue: false
+
+  - changeSet:
+      id: 4
+      author: Ego
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: post
+            baseColumnNames: uid
+            constraintName: fk_post_user
+            referencedTableName: user
+            referencedColumnNames: uid
+            onDelete: CASCADE
+
+  - changeSet:
+      id: 5
+      author: Ego
+      changes:
+        - addColumn:
+            tableName: comment
+            columns:
+              - column:
+                  name: if_deleted
+                  type: boolean
+                  defaultValue: false
+                  constraints:
+                    nullable: false
+                    defaultValue: false
+  - changeSet:
+      id: 6
+      author: Ego
+      changes:
+        - addColumn:
+            tableName: comment
+            columns:
+              - column:
+                  name: pid
+                  type: int
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 7
+      author: Ego
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: comment
+            baseColumnNames: uid
+            constraintName: fk_comment_user
+            referencedTableName: user
+            referencedColumnNames: uid
+            onDelete: CASCADE
+
+  - changeSet:
+      id: 8
+      author: Ego
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: comment
+            baseColumnNames: pid
+            constraintName: fk_comment_post
+            referencedTableName: post
+            referencedColumnNames: pid
+            onDelete: CASCADE
+  - changeSet:
+      id: 9
+      author: Ego
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: comment
+            baseColumnNames: parent_comment_id
+            constraintName: fk_comment_parent_comment
+            referencedTableName: comment
+            referencedColumnNames: cid
+            onDelete: SET NULL
+  - changeSet:
+      id: 10
+      author: Ego
+      changes:
+        - renameColumn:
+            tableName: post
+            oldColumnName: post
+            newColumnName: post_date
+            columnDataType: datetime
+  - changeSet:
+      id: 11
+      author: Ego
+      changes:
+        - addColumn:
+            tableName: emotion_record
+            columns:
+              - column:
+                  name: uid
+                  type: int
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 12
+      author: Ego
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: emotion_record
+            baseColumnNames: uid
+            constraintName: fk_emotion_record_user
+            referencedTableName: user
+            referencedColumnNames: uid
+            onDelete: CASCADE

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: "springboot-liuqu"
+    volumes:
+      - /home/ec2-user/liuqu:/data
+    ports:
+      - 8083:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://liuqu.crkthhieiwvr.ap-southeast-2.rds.amazonaws.com:3306/liuqu
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Yourpassword.
+
