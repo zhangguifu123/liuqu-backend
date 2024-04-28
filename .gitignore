@@ -3,3 +3,4 @@
 build/
 .env
 ./docker/springboot/.env
+*.pem
